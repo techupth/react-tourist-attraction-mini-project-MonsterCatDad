@@ -1,12 +1,17 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
+import Header from "./components/header";
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <>
-      <div className="App">
-        <h1>hello</h1>
-      </div>
+      <Header searchQuery={searchQuery} />
     </>
   );
 }
