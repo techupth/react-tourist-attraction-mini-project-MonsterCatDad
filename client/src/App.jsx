@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import link from "./assets/link-solid.svg";
 
-
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -16,11 +15,11 @@ function App() {
     );
     setSearchResult(result.data.data);
     console.log(result);
-  }
+  };
 
-   useEffect(() => {
-     getDataAttraction();
-   }, [searchInput]);
+  useEffect(() => {
+    getDataAttraction();
+  }, [searchInput]);
 
   const clickInput = (string) => {
     if (searchInput) {
@@ -28,32 +27,32 @@ function App() {
     } else {
       setSearchInput(string);
     }
-   }
-
-   const toggle = () => {
-    setShowFullDescription(!showFullDescription);
-   }
-
-  const delay = (delayTime) => {
-    return new Promise(resolve => setTimeout(resolve, delayTime));
   };
 
-  const onCopy = async() => {
-    setCopy(true)
+  const toggle = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  const delay = (delayTime) => {
+    return new Promise((resolve) => setTimeout(resolve, delayTime));
+  };
+
+  const onCopy = async () => {
+    setCopy(true);
     await delay(3000);
-    setCopy(false)
-  }
+    setCopy(false);
+  };
 
   return (
     <main className="flex flex-col justify-center items-center m-20 font-[mitr]">
-      <h1 className="text-5xl text-blue-500 font-bold">เที่ยวไหนดี</h1>
+      <h1 className="text-5xl text-green-500 font-bold">เที่ยวไหนD</h1>
       <div className="flex flex-col w-8/12 my-8">
         <label htmlFor="input-massage">ค้นหาที่เที่ยว</label>
         <input
           className="text-center my-2 border border-b-zinc-500 outline-none"
           id="input-massage"
           type="text"
-          placeholder="หาที่เที่ยวแล้วไปกัน"
+          placeholder="เที่ยวไหนดี"
           onChange={(event) => {
             setSearchInput(event.target.value);
           }}
@@ -63,10 +62,7 @@ function App() {
       <ul className="flex flex-col h-fit gap-8">
         {searchResult.map((trips, index) => {
           return (
-            <li
-              key={index}
-              className="flex gap-8 max-md:flex-col"
-            >
+            <li key={index} className="flex gap-8 max-md:flex-col">
               <div>
                 <img
                   className="h-60 w-[500px] rounded-3xl"
@@ -85,9 +81,13 @@ function App() {
                 <p>
                   {trips.description.slice(0, 100)}
                   {showFullDescription && trips.description.slice(100)}
-                  <button onClick={(index) => {
-                    toggle(index);
-                  }}>...</button>
+                  <button
+                    onClick={(index) => {
+                      toggle(index);
+                    }}
+                  >
+                    ...
+                  </button>
                 </p>
                 <a
                   className=" text-blue-500 underline"
